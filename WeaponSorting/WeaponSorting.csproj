@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(ProjectDir)weapons.txt&quot; &quot;$(OutDir)&quot;" />
+    <Exec Command="xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)data&quot; /y /i /e/" />
   </Target>
 
 </Project>
