@@ -28,7 +28,7 @@ namespace WeaponSorting
         // agora é usado pra debug, talvez não tenha uso mais tarde
         public override string ToString()
         {
-            return $"{_name} {_rarity} {_damage}";
+            return $"{_name} - {_rarity} - {_damage}";
         }
     }
 }
