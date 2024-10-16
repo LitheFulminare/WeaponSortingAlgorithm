@@ -1,0 +1,198 @@
+Seeking Dagger
+legendary
+33
+Cursed Chakram
+common
+7
+Silver Sword
+common
+15
+Seeking Katana
+epic
+31
+Cursed Mace
+common
+20
+Queen's Chakram
+legendary
+35
+Seeking Bow
+epic
+33
+Loyal Mace
+rare
+20
+King's Sword
+epic
+29
+Silver Kunai
+epic
+25
+Green Gautlets
+epic
+29
+Magic Chestplate
+common
+17
+White Club
+rare
+23
+Magic Boots
+epic
+28
+Quick Gautlets
+rare
+30
+Seeking Slingshot
+common
+8
+Battle Katana
+legendary
+38
+Battle Wand
+common
+20
+King's Axe
+common
+11
+Iron Boots
+common
+12
+Copper Chakram
+common
+15
+Silver Slingshot
+epic
+32
+Loyal Helmet
+rare
+17
+Loyal Katana
+legendary
+31
+Quick Bat
+legendary
+30
+Great Longsword
+rare
+22
+Silver Arrow
+legendary
+41
+Cursed Arrow
+common
+23
+Great Helmet
+epic
+24
+Blue Shield
+common
+22
+Loyal Chestplate
+common
+6
+Copper Spear
+common
+7
+Cursed Helmet
+common
+22
+Golden Gautlets
+rare
+27
+Strong Longsword
+common
+13
+Iron Spear
+common
+17
+Metal Chestplate
+legendary
+41
+White Kunai
+epic
+29
+Iron Shield
+rare
+23
+Red Sword
+legendary
+41
+War Axe
+epic
+22
+Blessed Mace
+common
+4
+Black Sword
+rare
+15
+White Sword
+rare
+30
+Copper Bat
+legendary
+27
+Seeking Boots
+rare
+21
+Powerful Crossbow
+legendary
+32
+Blessed Boots
+common
+14
+Iron Spear
+epic
+21
+Magic Mace
+legendary
+44
+Seeking Sword
+legendary
+29
+Metal Bat
+legendary
+29
+Blue Gautlets
+legendary
+40
+Black Bow
+rare
+25
+Howling Knife
+rare
+23
+Quick Chestplate
+legendary
+38
+Red Boots
+common
+14
+Red Helmet
+rare
+30
+Seeking Staff
+legendary
+33
+White Shield
+common
+12
+Blue Helmet
+legendary
+40
+Blue Boots
+rare
+26
+Green Knife
+common
+4
+Loyal Bat
+rare
+27
+Golden Wand
+epic
+18
+Green Chakram
+legendary
+36
