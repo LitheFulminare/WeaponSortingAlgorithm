@@ -77,7 +77,7 @@ namespace WeaponSorting
                 switch (weaponProperty)
                 {
                     case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
-                    case WeaponProperty.Rarity: value = GetMostRare(left[il].Rarity, right[ir].Rarity); break;
+                    case WeaponProperty.Rarity: value = rarityStringToInt[left[il].Rarity] <= rarityStringToInt[right[ir].Rarity]; break; // compara usando o dicionario
                     case WeaponProperty.Damage: value = (left[il].Damage < right[ir].Damage); break;
                 }
 
@@ -139,16 +139,6 @@ namespace WeaponSorting
             }
 
             return firstNameComesFirst;
-        }
-
-        private static bool GetMostRare(string rarityFirstWeapon, string raritySecondWeapon)
-        {
-            if (rarityStringToInt[rarityFirstWeapon] >= rarityStringToInt[raritySecondWeapon])
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }
