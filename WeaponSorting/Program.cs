@@ -70,8 +70,8 @@ void PrintSortedWeapons(List<List<Weapon>> weaponList)
 
         for (int j = 0; j < weaponList[i].Count; j++)
         {
-            Console.WriteLine("Teste");
-            //Console.WriteLine(weaponList[i][j]);
+            //Console.WriteLine("Teste"); // debug, será apagado e usado o de baixo
+            Console.WriteLine(weaponList[i][j]);
         }
     } 
 }
