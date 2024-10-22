@@ -19,6 +19,9 @@ namespace WeaponSorting
             { "legendary", 3 }
         };
 
+        // chamado por program
+        // lida com o loop para orgazinar usando 3 parametros diferentes
+        // a organização de fato é feita pelo metodo privado 'Merge'
         public static List<List<Weapon>> MergeSort(List<Weapon> weaponList)
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
@@ -110,11 +113,19 @@ namespace WeaponSorting
             }
         }
 
+        // chamado por program
+        // lida com o loop para orgazinar usando 3 parametros diferentes
+        // a organização de fato é feita pelo metodo privado 'Quick'
         public static List<List<Weapon>> QuickSort(List<Weapon> weaponList)
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
 
             return sortedLists;
+        }
+
+        private static void Quick()
+        {
+
         }
 
         private static bool GetFirstInAlfabeticalOrder(string firstName, string secondName)
