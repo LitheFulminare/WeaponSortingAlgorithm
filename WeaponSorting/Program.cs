@@ -65,7 +65,7 @@ void PrintSortedWeapons(List<List<Weapon>> weaponList)
             case 1: Console.WriteLine("\n---------------------- RARIDADE ----------------------\n"); break;
             case 2: Console.WriteLine("\n------------------------ DANO ------------------------\n"); break;
                 
-            default : Console.WriteLine("Index inválidó"); break;
+            default : Console.WriteLine("Index inválido"); break;
         }
 
         for (int j = 0; j < weaponList[i].Count; j++)
