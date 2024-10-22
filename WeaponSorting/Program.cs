@@ -28,30 +28,32 @@ List<Weapon> weapons = new List<Weapon>();
 
 weapons.AddRange(FileReader.CreateWeaponList(weaponsPath));
 
-//PrintAllWeapons();
+bool validInput = false;
 
-Console.WriteLine("Digite qual algorítimo deve ser usado para ordenar as armas (ordem crescente)");
-Console.WriteLine("1 - Merge Sort");
-Console.WriteLine("2 - Quick Sort\n");
-string? userInputStr = Console.ReadLine();
-
-if (userInputStr == "1")
+while (!validInput)
 {
-    Console.WriteLine("\nMergeSort selecionado");
-    PrintSortedWeapons(SortData.MergeSort(weapons));
-}
+    Console.WriteLine("Digite qual algorítimo deve ser usado para ordenar as armas (ordem crescente)");
+    Console.WriteLine("1 - Merge Sort");
+    Console.WriteLine("2 - Quick Sort\n");
+    string? userInputStr = Console.ReadLine();
 
-else if (userInputStr == "2")
-{
-    Console.WriteLine("\nQuickSort selecionado"); 
-    PrintSortedWeapons(SortData.QuickSort(weapons));
-}
-
-void PrintAllWeapons()
-{
-    foreach (Weapon weapon in weapons)
+    if (userInputStr == "1")
     {
-        Console.WriteLine(weapon);
+        Console.WriteLine("\nMergeSort selecionado");
+        PrintSortedWeapons(SortData.MergeSort(weapons));
+        validInput = true;
+    }
+
+    else if (userInputStr == "2")
+    {
+        Console.WriteLine("\nQuickSort selecionado");
+        PrintSortedWeapons(SortData.QuickSort(weapons));
+        validInput = true;
+    }
+
+    else
+    {
+        Console.WriteLine($"\n'{userInputStr}' não é uma opção válida\n");
     }
 }
 
@@ -64,14 +66,13 @@ void PrintSortedWeapons(List<List<Weapon>> weaponList)
             case 0: Console.WriteLine("\n------------------ ORDEM ALFABÉTICA ------------------\n"); break;
             case 1: Console.WriteLine("\n---------------------- RARIDADE ----------------------\n"); break;
             case 2: Console.WriteLine("\n------------------------ DANO ------------------------\n"); break;
-                
-            default : Console.WriteLine("Index inválido"); break;
         }
 
         for (int j = 0; j < weaponList[i].Count; j++)
         {
-            //Console.WriteLine("Teste"); // debug, será apagado e usado o de baixo
             Console.WriteLine(weaponList[i][j]);
         }
-    } 
+    }
+
+    Console.WriteLine("\n------------------------ FIM -------------------------");
 }

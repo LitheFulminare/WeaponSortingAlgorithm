@@ -31,9 +31,6 @@ namespace WeaponSorting
                 sortedLists.Add(sortedWeaponList);
             }
 
-            sortedLists.Add(weaponList);
-            sortedLists.Add(weaponList);
-
             return sortedLists;
         }
 
@@ -81,7 +78,7 @@ namespace WeaponSorting
                 {
                     case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
                     case WeaponProperty.Rarity: value = GetMostRare(left[il].Rarity, right[ir].Rarity); break;
-                    //case WeaponProperty.Rarity: value = 
+                    case WeaponProperty.Damage: value = (left[il].Damage < right[ir].Damage); break;
                 }
 
                 if (value)
