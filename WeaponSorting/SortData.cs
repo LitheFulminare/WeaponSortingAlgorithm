@@ -69,6 +69,7 @@ namespace WeaponSorting
             int ix = 0;// índice final
             while (il < left.Length && ir < right.Length)
             {
+                // é aqui que a ordenação realmente acontece
                 if (GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name))
                 //if (left[il] < right[ir])
                 {
