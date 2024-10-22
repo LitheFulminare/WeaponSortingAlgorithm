@@ -9,9 +9,10 @@ using System.Threading.Tasks;
 
 public enum WeaponProperty
 {
-    name = 0,
-    rarity = 1,
-    damage = 2,
+    none = 0,
+    name = 1,
+    rarity = 2,
+    damage = 3,
 }
 
 namespace WeaponSorting
@@ -22,10 +23,13 @@ namespace WeaponSorting
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
 
-            Weapon[] weaponArray = weaponList.ToArray();
-            Merge(weaponArray);
-            List<Weapon> sortedWeaponList = weaponArray.ToList();
-            sortedLists.Add(sortedWeaponList);
+            for (int i = 0; i < 3; i++)
+            {
+                Weapon[] weaponArray = weaponList.ToArray();
+                Merge(weaponArray, (WeaponProperty)i + 1);
+                List<Weapon> sortedWeaponList = weaponArray.ToList();
+                sortedLists.Add(sortedWeaponList);
+            }
 
             sortedLists.Add(weaponList);
             sortedLists.Add(weaponList);
@@ -33,7 +37,7 @@ namespace WeaponSorting
             return sortedLists;
         }
 
-        private static void Merge(Weapon[] weaponArray)
+        private static void Merge(Weapon[] weaponArray, WeaponProperty weaponProperty)
         {
             // Caso um array tenha 0 ou 1 elementos, ele já está ordenado
             if (weaponArray.Length < 2)
@@ -58,8 +62,8 @@ namespace WeaponSorting
             }
 
             // Ordenação dos sub-arrays com o próprio Merge Sort, recursivamente.
-            Merge(left);
-            Merge(right);
+            Merge(left, weaponProperty);
+            Merge(right, weaponProperty);
 
             // Após a ordenação, é feita a mesclagem(merge) dos dois sub-arrays, copiando
             //seus valores para o array principal. A cópia é feita retirando o menor dos
@@ -69,8 +73,18 @@ namespace WeaponSorting
             int ix = 0;// índice final
             while (il < left.Length && ir < right.Length)
             {
-                // é aqui que a ordenação realmente acontece
-                if (GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name))
+                // é aqui que a magica acontece
+
+                bool value = false; // guarda o resultado comparação (ex.: se o dano da arma da esquerda é maior que o da direita)
+
+                switch (weaponProperty)
+                {
+                    case WeaponProperty.name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
+                    //case WeaponProperty.rarity: value = 
+                    //case WeaponProperty.rarity: value = 
+                }
+
+                if (value)
                 //if (left[il] < right[ir])
                 {
                     weaponArray[ix] = left[il];
