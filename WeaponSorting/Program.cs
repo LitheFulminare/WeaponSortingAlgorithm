@@ -32,7 +32,7 @@ bool validInput = false;
 
 while (!validInput)
 {
-    Console.WriteLine("Digite qual algorítimo deve ser usado para ordenar as armas (ordem crescente)");
+    Console.WriteLine("Digite qual algorítimo deve ser usado para ordenar as armas");
     Console.WriteLine("1 - Merge Sort");
     Console.WriteLine("2 - Quick Sort\n");
     string? userInputStr = Console.ReadLine();
