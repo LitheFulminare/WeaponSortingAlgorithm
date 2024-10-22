@@ -70,7 +70,7 @@ namespace WeaponSorting
             while (il < left.Length && ir < right.Length)
             {
                 if (GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name))
-                //if (left[il].Name < right[ir].Name)
+                //if (left[il] < right[ir])
                 {
                     weaponArray[ix] = left[il];
                     il++;
@@ -109,36 +109,22 @@ namespace WeaponSorting
         {
             bool firstNameComesFirst = false;
 
-            //Console.WriteLine($"Parameters: {firstName} - {secondName}");
-
             for (int i = 0; i < firstName.Length; i++)
             {
                 if (i < secondName.Length)
                 {
-                    Console.WriteLine($"Comparing {firstName[i]} and {secondName[i]}");
                     if (firstName[i] < secondName[i])
                     {
-                        Console.WriteLine($"{firstName[i]} comes before {secondName[i]}");
                         firstNameComesFirst = true;
                         break;
                     }
                     else if (firstName[i] > secondName[i])
                     {
-                        Console.WriteLine($"{secondName[i]} comes before {firstName[i]}");
                         break;
                     }
-                    else
-                    {
-                        Console.WriteLine($"{firstName[i]} is the same letter {secondName[i]}");
-                    }
+                    // caso as letras sejam iguais, não dá break e ele continua comparando
                 }           
             }
-
-            if (firstNameComesFirst)
-            {
-                Console.WriteLine($"{firstName} comes before than {secondName}");
-            }
-            else Console.WriteLine($"{secondName} comes before than {firstName}");
 
             return firstNameComesFirst;
         }
