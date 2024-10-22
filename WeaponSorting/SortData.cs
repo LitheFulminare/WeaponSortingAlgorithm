@@ -7,18 +7,18 @@ using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Threading.Tasks;
 
-public enum WeaponProperty
-{
-    none = 0,
-    name = 1,
-    rarity = 2,
-    damage = 3,
-}
-
 namespace WeaponSorting
 {
     internal class SortData
     {
+        static Dictionary<string, int> rarityStringToInt = new Dictionary<string, int>
+        {
+            { "common", 0 },
+            { "rare", 1 },
+            { "epic", 2 },
+            { "legendary", 3 }
+        };
+
         public static List<List<Weapon>> MergeSort(List<Weapon> weaponList)
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
@@ -79,9 +79,9 @@ namespace WeaponSorting
 
                 switch (weaponProperty)
                 {
-                    case WeaponProperty.name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
-                    //case WeaponProperty.rarity: value = 
-                    //case WeaponProperty.rarity: value = 
+                    case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
+                    case WeaponProperty.Rarity: value = GetMostRare(left[il].Rarity, right[ir].Rarity); break;
+                    //case WeaponProperty.Rarity: value = 
                 }
 
                 if (value)
@@ -142,6 +142,16 @@ namespace WeaponSorting
             }
 
             return firstNameComesFirst;
+        }
+
+        private static bool GetMostRare(string rarityFirstWeapon, string raritySecondWeapon)
+        {
+            if (rarityStringToInt[rarityFirstWeapon] >= rarityStringToInt[raritySecondWeapon])
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
