@@ -11,6 +11,7 @@ namespace WeaponSorting
 {
     internal class SortData
     {
+        // usado para facilmente comparar raridade de duas armas
         static Dictionary<string, int> rarityStringToInt = new Dictionary<string, int>
         {
             { "common", 0 },
@@ -73,19 +74,23 @@ namespace WeaponSorting
             int ix = 0;// índice final
             while (il < left.Length && ir < right.Length)
             {
-                // é aqui que a magica acontece
+                // é aqui que a comparação e organização de dados realmente acontece
 
                 bool value = false; // guarda o resultado comparação (ex.: se o dano da arma da esquerda é maior que o da direita)
 
                 switch (weaponProperty)
                 {
+                    // organiza em ordem alfabética crescente (de A para Z)
                     case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
+                    
+                    // organiza por raridade em ordem decrescente
                     case WeaponProperty.Rarity: value = rarityStringToInt[left[il].Rarity] >= rarityStringToInt[right[ir].Rarity]; break; // compara usando o dicionario
+                    
+                    // organiza por dano em ordem decrescente
                     case WeaponProperty.Damage: value = (left[il].Damage > right[ir].Damage); break;
                 }
 
                 if (value)
-                //if (left[il] < right[ir])
                 {
                     weaponArray[ix] = left[il];
                     il++;
@@ -130,26 +135,23 @@ namespace WeaponSorting
 
         private static bool GetFirstInAlfabeticalOrder(string firstName, string secondName)
         {
-            bool firstNameComesFirst = false;
-
             for (int i = 0; i < firstName.Length; i++)
             {
                 if (i < secondName.Length)
                 {
                     if (firstName[i] < secondName[i])
                     {
-                        firstNameComesFirst = true;
-                        break;
+                        return true;
                     }
                     else if (firstName[i] > secondName[i])
                     {
-                        break;
+                        return false;
                     }
                     // caso as letras sejam iguais, não dá break e ele continua comparando
                 }           
             }
 
-            return firstNameComesFirst;
+            return false;
         }
     }
 }

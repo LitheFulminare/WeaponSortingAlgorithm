@@ -26,7 +26,7 @@ string weaponsPath = "data/weapons.txt";
 
 List<Weapon> weapons = new List<Weapon>();
 
-weapons.AddRange(FileReader.CreateWeaponList(weaponsPath));
+weapons.AddRange(FileReader.CreateWeaponList(weaponsPath)); // le o arquivo e cria os objetos da classe 'Weapon'
 
 bool validInput = false;
 
