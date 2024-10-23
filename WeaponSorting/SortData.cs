@@ -166,9 +166,27 @@ namespace WeaponSorting
             // aqui que é comparação acontece
             // geralmente, aqui os elementos menores que o pivô seriam movidos pra esquerda
             // aqui a ordem alfabética é crescente, mas raridade e dano é decrescente
+
             for (int j = low; j <= high - 1; j++)
             {
-                if (arr[j].Damage < pivot.Damage)
+                bool value = false;
+
+                // switch case para pegar qual propriedade deve ser comparada
+                // merge sort tem um igual
+                switch (weaponProperty)
+                {
+                    // organiza em ordem alfabética crescente (de A para Z)
+                    case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(arr[j].Name, pivot.Name); break;
+
+                    // organiza por raridade em ordem decrescente (comparação feita pelo dicionario)
+                    case WeaponProperty.Rarity: value = rarityStringToInt[arr[j].Rarity] >= rarityStringToInt[pivot.Rarity]; break;
+
+                    // organiza por dano em ordem decrescente
+                    case WeaponProperty.Damage: value = (arr[j].Damage > pivot.Damage); break;
+                }
+
+                if (value)
+                //if (arr[j].Damage < pivot.Damage)
                 {
                     i++;
                     Swap(arr, i, j);
