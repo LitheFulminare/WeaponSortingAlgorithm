@@ -20,9 +20,10 @@ namespace WeaponSorting
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
 
+            Weapon[] weaponArray = weaponList.ToArray();
+
             for (int i = 0; i < 3; i++)
-            {
-                Weapon[] weaponArray = weaponList.ToArray();
+            {              
                 Merge(weaponArray, (WeaponProperty)i);
                 List<Weapon> sortedWeaponList = weaponArray.ToList();
                 sortedLists.Add(sortedWeaponList);
