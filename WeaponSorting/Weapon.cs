@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 // usado pra facilmente definir qual propriedade deve ser usada para comparar dentro de um for loop
 public enum WeaponProperty
-{
-    None = 0,
-    Name = 1,
-    Rarity = 2,
-    Damage = 3,
+{ 
+    Name = 0,
+    Rarity = 1,
+    Damage = 2,
 }
 
 namespace WeaponSorting
@@ -29,12 +28,10 @@ namespace WeaponSorting
             this._damage = damage;
         }
 
-        // propriedades
         public string Name => _name;
         public string Rarity => _rarity;
         public int Damage => _damage; 
 
-        // agora é usado pra debug, talvez não tenha uso mais tarde
         public override string ToString()
         {
             return $"{_name} - {_rarity} - {_damage}";

@@ -30,7 +30,7 @@ namespace WeaponSorting
             for (int i = 0; i < 3; i++)
             {
                 Weapon[] weaponArray = weaponList.ToArray();
-                Merge(weaponArray, (WeaponProperty)i + 1);
+                Merge(weaponArray, (WeaponProperty)i);
                 List<Weapon> sortedWeaponList = weaponArray.ToList();
                 sortedLists.Add(sortedWeaponList);
             }
@@ -83,8 +83,8 @@ namespace WeaponSorting
                     // organiza em ordem alfabética crescente (de A para Z)
                     case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
                     
-                    // organiza por raridade em ordem decrescente
-                    case WeaponProperty.Rarity: value = rarityStringToInt[left[il].Rarity] >= rarityStringToInt[right[ir].Rarity]; break; // compara usando o dicionario
+                    // organiza por raridade em ordem decrescente (comparação feita pelo dicionario)
+                    case WeaponProperty.Rarity: value = rarityStringToInt[left[il].Rarity] >= rarityStringToInt[right[ir].Rarity]; break; 
                     
                     // organiza por dano em ordem decrescente
                     case WeaponProperty.Damage: value = (left[il].Damage > right[ir].Damage); break;
@@ -143,10 +143,12 @@ namespace WeaponSorting
                     {
                         return true;
                     }
-                    else if (firstName[i] > secondName[i])
+                  
+                    if (firstName[i] > secondName[i])
                     {
                         return false;
                     }
+
                     // caso as letras sejam iguais, não dá break e ele continua comparando
                 }           
             }
