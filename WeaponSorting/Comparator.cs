@@ -48,7 +48,7 @@ namespace WeaponSorting
                         return false;
                     }
 
-                    // caso as letras sejam iguais, não dá break e ele continua comparando
+                    // caso as letras sejam iguais ele continua comparando
                 }
             }
 
