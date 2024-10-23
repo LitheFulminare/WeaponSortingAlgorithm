@@ -12,6 +12,7 @@ namespace WeaponSorting
 {
     internal class SortData
     {
+        /*------------------------------------ MERGE SORT ------------------------------------*/
 
         // chamado por program
         // lida com o loop para orgazinar usando 3 parametros diferentes
@@ -97,6 +98,10 @@ namespace WeaponSorting
                 ix++;
             }
         }
+
+
+        /*------------------------------------ QUICK SORT ------------------------------------*/
+
 
         // chamado por program
         // lida com o loop para orgazinar usando 3 parametros diferentes
