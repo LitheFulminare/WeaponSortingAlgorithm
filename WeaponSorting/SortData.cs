@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection.PortableExecutable;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,14 +12,6 @@ namespace WeaponSorting
 {
     internal class SortData
     {
-        // usado para facilmente comparar raridade de duas armas
-        static Dictionary<string, int> rarityStringToInt = new Dictionary<string, int>
-        {
-            { "common", 0 },
-            { "rare", 1 },
-            { "epic", 2 },
-            { "legendary", 3 }
-        };
 
         // chamado por program
         // lida com o loop para orgazinar usando 3 parametros diferentes
@@ -74,25 +67,9 @@ namespace WeaponSorting
             int ix = 0;// índice final
             while (il < left.Length && ir < right.Length)
             {
-                // é aqui que a comparação e organização de dados realmente acontece
 
-                bool value = false; // guarda o resultado comparação (ex.: se o dano da arma da esquerda é maior que o da direita)
-
-                // switch case para pegar qual propriedade deve ser comparada
-                // quick sort tem um igual
-                switch (weaponProperty)
-                {
-                    // organiza em ordem alfabética crescente (de A para Z)
-                    case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(left[il].Name, right[ir].Name); break;
-                    
-                    // organiza por raridade em ordem decrescente (comparação feita pelo dicionario)
-                    case WeaponProperty.Rarity: value = rarityStringToInt[left[il].Rarity] >= rarityStringToInt[right[ir].Rarity]; break; 
-                    
-                    // organiza por dano em ordem decrescente
-                    case WeaponProperty.Damage: value = (left[il].Damage > right[ir].Damage); break;
-                }
-
-                if (value)
+                // compara as propriedades das duas armas
+                if (Comparator.CompareProperties(left[il], right[ir], weaponProperty))
                 {
                     weaponArray[ix] = left[il];
                     il++;
@@ -144,11 +121,10 @@ namespace WeaponSorting
         {
             if (low < high)
             {
-                // pi is the partition return index of pivot
+                // Partition retorna o index do pivô
                 int pi = Partition(arr, low, high, weaponProperty);
 
-                // Recursion calls for smaller elements
-                // and greater or equals elements
+                // dá sort nos subarrays cortados pelo pivô
                 Quick(arr, low, pi - 1, weaponProperty);
                 Quick(arr, pi + 1, high, weaponProperty);
             }
@@ -160,7 +136,6 @@ namespace WeaponSorting
             Weapon pivot = arr[high];
 
             // index do menor elemento
-            // indica a posição certa do pivô
             int i = low - 1;
 
             // aqui que é comparação acontece
@@ -169,24 +144,8 @@ namespace WeaponSorting
 
             for (int j = low; j <= high - 1; j++)
             {
-                bool value = false;
-
-                // switch case para pegar qual propriedade deve ser comparada
-                // merge sort tem um igual
-                switch (weaponProperty)
-                {
-                    // organiza em ordem alfabética crescente (de A para Z)
-                    case WeaponProperty.Name: value = GetFirstInAlfabeticalOrder(arr[j].Name, pivot.Name); break;
-
-                    // organiza por raridade em ordem decrescente (comparação feita pelo dicionario)
-                    case WeaponProperty.Rarity: value = rarityStringToInt[arr[j].Rarity] >= rarityStringToInt[pivot.Rarity]; break;
-
-                    // organiza por dano em ordem decrescente
-                    case WeaponProperty.Damage: value = (arr[j].Damage > pivot.Damage); break;
-                }
-
-                if (value)
-                //if (arr[j].Damage < pivot.Damage)
+                // compara as propriedades das duas armas
+                if (Comparator.CompareProperties(arr[j], pivot, weaponProperty))
                 {
                     i++;
                     Swap(arr, i, j);
@@ -194,7 +153,7 @@ namespace WeaponSorting
             }
 
             Swap(arr, i + 1, high);
-            return i + 1; // retorna o index do pivô pra ser usado nsa calls recursivas
+            return i + 1; // retorna o index pra ser usado nas calls recursivas
         }
 
         // usada pelo quick sort
@@ -203,29 +162,6 @@ namespace WeaponSorting
             Weapon temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
-        }
-
-        private static bool GetFirstInAlfabeticalOrder(string firstName, string secondName)
-        {
-            for (int i = 0; i < firstName.Length; i++)
-            {
-                if (i < secondName.Length)
-                {
-                    if (firstName[i] < secondName[i])
-                    {
-                        return true;
-                    }
-                  
-                    if (firstName[i] > secondName[i])
-                    {
-                        return false;
-                    }
-
-                    // caso as letras sejam iguais, não dá break e ele continua comparando
-                }           
-            }
-
-            return false;
         }
     }
 }
