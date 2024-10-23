@@ -40,15 +40,18 @@ while (!validInput)
     if (userInputStr == "1")
     {
         Console.WriteLine("\nMergeSort selecionado");
-        PrintSortedWeapons(SortData.MergeSort(weapons));
         validInput = true;
+
+        PrintSortedWeapons(SortData.MergeSort(weapons));
     }
 
     else if (userInputStr == "2")
     {
         Console.WriteLine("\nQuickSort selecionado");
-        PrintSortedWeapons(SortData.QuickSort(weapons));
         validInput = true;
+
+        PrintSortedWeapons(SortData.QuickSort(weapons));
+        
     }
 
     else
