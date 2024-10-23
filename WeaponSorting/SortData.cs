@@ -78,6 +78,8 @@ namespace WeaponSorting
 
                 bool value = false; // guarda o resultado comparação (ex.: se o dano da arma da esquerda é maior que o da direita)
 
+                // switch case para pegar qual propriedade deve ser comparada
+                // quick sort tem um igual
                 switch (weaponProperty)
                 {
                     // organiza em ordem alfabética crescente (de A para Z)
@@ -125,12 +127,64 @@ namespace WeaponSorting
         {
             List<List<Weapon>> sortedLists = new List<List<Weapon>>();
 
+            Weapon[] weaponArray = weaponList.ToArray();
+            int len = weaponArray.Length;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Quick(weaponArray, 0, len - 1, (WeaponProperty)i);
+                List<Weapon> sortedWeaponList = weaponArray.ToList();
+                sortedLists.Add(sortedWeaponList);
+            }
+
             return sortedLists;
         }
 
-        private static void Quick()
+        private static void Quick(Weapon[] arr, int low, int high, WeaponProperty weaponProperty)
         {
+            if (low < high)
+            {
+                // pi is the partition return index of pivot
+                int pi = Partition(arr, low, high, weaponProperty);
 
+                // Recursion calls for smaller elements
+                // and greater or equals elements
+                Quick(arr, low, pi - 1, weaponProperty);
+                Quick(arr, pi + 1, high, weaponProperty);
+            }
+        }
+        
+        // partição do quick sort
+        static int Partition(Weapon[] arr, int low, int high, WeaponProperty weaponProperty)
+        {
+            Weapon pivot = arr[high];
+
+            // index do menor elemento
+            // indica a posição certa do pivô
+            int i = low - 1;
+
+            // aqui que é comparação acontece
+            // geralmente, aqui os elementos menores que o pivô seriam movidos pra esquerda
+            // aqui a ordem alfabética é crescente, mas raridade e dano é decrescente
+            for (int j = low; j <= high - 1; j++)
+            {
+                if (arr[j].Damage < pivot.Damage)
+                {
+                    i++;
+                    Swap(arr, i, j);
+                }
+            }
+
+            Swap(arr, i + 1, high);
+            return i + 1; // retorna o index do pivô pra ser usado nsa calls recursivas
+        }
+
+        // usada pelo quick sort
+        static void Swap(Weapon[] arr, int i, int j)
+        {
+            Weapon temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
 
         private static bool GetFirstInAlfabeticalOrder(string firstName, string secondName)
