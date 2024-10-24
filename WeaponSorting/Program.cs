@@ -5,17 +5,17 @@
  -loop 1-
  cria uma copia da original
  ordena pela ordem alfabetica
- armazena ela em sortedLists<List>
+ armazena ela na lista sortedLists
 -loop 2-
  cria uma copia da original
  ordena por raridade
- armazena ela em sortedLists<List>
+ armazena ela na lista sortedLists
 -loop 3-
  cria uma copia da original
  ordena por dano
- armazena ela em sortedLists<List>
+ armazena ela na lista sortedLists
 
- retorna sortedLists<List>
+ armazena ela na lista sortedLists
 
  program:
  printa todos os elementos da primeira, dps todos da segunda, etc */
@@ -28,8 +28,8 @@ List<Weapon> weapons = new List<Weapon>();
 
 weapons.AddRange(FileReader.CreateWeaponList(weaponsPath)); // le o arquivo e cria os objetos da classe 'Weapon'
 
+// lê input e seleciona o algoritmo
 bool validInput = false;
-
 while (!validInput)
 {
     Console.WriteLine("Digite qual algorítimo deve ser usado para ordenar as armas");
