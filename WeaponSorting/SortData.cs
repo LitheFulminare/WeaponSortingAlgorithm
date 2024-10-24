@@ -137,7 +137,7 @@ namespace WeaponSorting
         }
         
         // partição do quick sort
-        static int Partition(Weapon[] arr, int low, int high, WeaponProperty weaponProperty)
+        private static int Partition(Weapon[] arr, int low, int high, WeaponProperty weaponProperty)
         {
             Weapon pivot = arr[high];
 
@@ -163,7 +163,7 @@ namespace WeaponSorting
         }
 
         // usada pelo quick sort
-        static void Swap(Weapon[] arr, int i, int j)
+        private static void Swap(Weapon[] arr, int i, int j)
         {
             Weapon temp = arr[i];
             arr[i] = arr[j];
