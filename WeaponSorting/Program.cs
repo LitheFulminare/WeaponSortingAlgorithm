@@ -15,7 +15,7 @@
  ordena por dano
  armazena ela na lista sortedLists
 
- armazena ela na lista sortedLists
+ retorna sortedLists
 
  program:
  printa todos os elementos da primeira, dps todos da segunda, etc */
